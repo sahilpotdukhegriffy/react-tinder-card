@@ -119,18 +119,19 @@ const TinderCard = React.forwardRef(
         if (onSwipe) onSwipe(dir);
         const power = 1.3;
         const disturbance = (Math.random() - 0.5) / 2;
-        const maxScreenDistance = Math.max(width, height) * 1.5; // Adjust for max screen size so it doesn't go too far out
+        const maxScreenDistance = Math.max(width, height) * 1.1; // Same for both directions to control distance
 
+        // Use the same logic for both right and left swipes
         if (dir === "right") {
           await animateOut(
-            { x: maxScreenDistance, y: disturbance },
+            { x: -maxScreenDistance, y: disturbance }, // Make right swipe like left by negating x
             setSpringTarget,
             width,
             height
           );
         } else if (dir === "left") {
           await animateOut(
-            { x: -power, y: disturbance },
+            { x: -maxScreenDistance, y: disturbance }, // Left swipe as usual
             setSpringTarget,
             width,
             height
