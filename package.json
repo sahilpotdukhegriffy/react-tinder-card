@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.51",
-    "standard": "^14.3.1",
-    "ts-readme-generator": "^0.7.2"
+    "standard": "^14.3.4",
+    "ts-readme-generator": "^0.7.4"
   },
   "peerDependencies": {
     "@react-spring/native": "^9.5.5",
