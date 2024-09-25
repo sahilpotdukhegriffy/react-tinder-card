@@ -3,8 +3,8 @@ const { useSpring, animated } = require("@react-spring/web");
 const useWindowSize = require("./useWindowSize");
 
 const settings = {
-  maxTilt: 25, // in deg
-  rotationPower: 50,
+  maxTilt: 0, // in deg
+  rotationPower: 0,
   swipeThreshold: 0.5, // need to update this threshold for RN (1.5 seems reasonable...?)
 };
 
@@ -119,19 +119,16 @@ const TinderCard = React.forwardRef(
         if (onSwipe) onSwipe(dir);
         const power = 1.3;
         const disturbance = (Math.random() - 0.5) / 2;
-        const maxScreenDistance = Math.max(width, height) * 1.1; // Same for both directions to control distance
-
-        // Use the same logic for both right and left swipes
         if (dir === "right") {
           await animateOut(
-            { x: -maxScreenDistance, y: disturbance }, // Make right swipe like left by negating x
+            { x: power, y: disturbance },
             setSpringTarget,
             width,
             height
           );
         } else if (dir === "left") {
           await animateOut(
-            { x: -maxScreenDistance, y: disturbance }, // Left swipe as usual
+            { x: -power, y: disturbance },
             setSpringTarget,
             width,
             height
